@@ -101,11 +101,12 @@ class RecaptchaSolver:
         # If the captcha image audio is available, locate it. Otherwise, skip to the next line of code.
 
         try:
-            self._wait_for_element(
+            audio_button = self._wait_for_element(
                 by=By.XPATH,
                 locator='//*[@id="recaptcha-audio-button"]',
                 timeout=1,
-            ).click()
+            )
+            self._js_click(audio_button)
 
         except TimeoutException:
             pass
